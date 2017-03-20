@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+project.ext{
+
+    versionName = "1.0"
+    versionCode = 1
+
+}
+
+project.afterEvaluate {
+
+    preBuild{}.dependsOn updateProjectInfo
+
+}
+
+task updateProjectInfo() {
+    println( "Updating project info from CI" )
+
+    //-PCIversionName
+    if (project.hasProperty("CIversionName")) {
+        println( "Version name: " + CIversionName )
+        project.ext.versionName = CIversionName
+    }
+
+    //-PCIversionCode
+    if (project.hasProperty("CIversionCode")) {
+        println( "Version Code: " + CIversionCode )
+        project.ext.versionCode = CIversionCode
+    }
+
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.example.udemy.myapp01"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode = project.ext.versionCode.toInteger()
+        versionName = project.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: "3d5790303f1d40bd94c4be330146eaff"]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    testCompile 'junit:junit:4.12'
+
+    // Hockey App
+    compile 'net.hockeyapp.android:HockeySDK:4.1.2'
+}
+
+
+clean.dependsOn updateProjectInfo
