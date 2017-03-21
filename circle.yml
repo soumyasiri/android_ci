@@ -19,10 +19,10 @@ dependencies:
       - echo y | android update sdk --no-ui --all --filter tools,extra-android-m2repository,extra-android-support,android-25
       - echo y | android update sdk --no-ui --all --filter build-tools-25.0.2
 
-#test:
-#    override:
-#        - ./gradlew assembleDebug -PCIversionName=$APP_VERSION_NAME -PCIversionCode=$((APP_VERSION_CODE+1))
-##        - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+test:
+    override:
+        - ./gradlew assembleDebug -PCIversionName=$APP_VERSION_NAME -PCIversionCode=$((APP_VERSION_CODE+1))
+        - cp -r app/build/outputs $CIRCLE_ARTIFACTS
 
 deployment:
   development:
@@ -32,7 +32,7 @@ deployment:
       #   1. Build location 
       #   2. API token from environment variable (CircleCI dashboard)-131db32fee7b4f509455e29851d97d12
       #   3. Hockey App APP_ID '
-      - ./scripts/deploy_hockeyapp.sh $AWESOME_TOKEN $HOCKEYAPP_APP_ID
+      - ./scripts/deploy_hockeyapp.sh $CIRCLE_ARTIFACTS $AWESOME_TOKEN $HOCKEYAPP_APP_ID
 #      - ./scripts/deploy_hockeyapp.sh $CIRCLE_ARTIFACTS$APK_PATH $AWESOME_TOKEN $HOCKEYAPP_APP_ID
 
 
