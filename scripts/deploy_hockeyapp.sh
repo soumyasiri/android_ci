@@ -15,7 +15,7 @@ PATH='/outputs/apk/app-debug.apk'
 #APK_PATH='android_ci/build/outputs/apk/app-debug.apk'
 APK_PATH=$1$PATH
 
-#echo $APK_PATH
+echo $APK_PATH
 
 # Second parameter expected as access token
 ACCESS_TOKEN=$2
