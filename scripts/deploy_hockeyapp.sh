@@ -6,14 +6,13 @@
 
 echo "Deployment Started!"
 
-PATH='/outputs/apk/app-debug.apk'
 
 # First paramter expected as APK path 
 #$CIRCLE_ARTIFACTS/app/outputs/apk/app-debug.apk
 
 #APK_PATH=$1
 #APK_PATH='android_ci/build/outputs/apk/app-debug.apk'
-APK_PATH=$1$PATH
+APK_PATH=$1
 
 echo $APK_PATH
 
