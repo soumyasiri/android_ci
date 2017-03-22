@@ -1,6 +1,7 @@
 #
 # Build configuration for Circle CI
 #
+#
 machine:
 
   environment:
@@ -8,7 +9,7 @@ machine:
     # yyyymmddHHMM
 #    VERSION_DATE : $(date +%Y%m%d%k%M)
     APK_DEBUG_PATH: '/outputs/apk/app-debug.apk'
-    VERSION_CODE=$APP_VERSION_CODE
+    VERSION_CODE: $APP_VERSION_CODE
     APP_VERSION_CODE: $((VERISION_CODE+10))
 
   java:
