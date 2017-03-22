@@ -10,9 +10,7 @@ machine:
 #    VERSION_DATE : $(date +%Y%m%d%k%M)
     APK_DEBUG_PATH: '/outputs/apk/app-debug.apk'
     VERSION_CODE: $APP_VERSION_CODE
-    echo $VERSION_CODE
     APP_VERSION_CODE: $((VERISION_CODE+10))
-    echo $APP_VERSION_CODE
 
   java:
     version: oraclejdk8
