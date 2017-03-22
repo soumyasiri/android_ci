@@ -1,7 +1,6 @@
 #
 # Build configuration for Circle CI
 #
-#
 machine:
 
   environment:
