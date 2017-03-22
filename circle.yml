@@ -21,7 +21,7 @@ dependencies:
 
 test:
     override:
-        - ./gradlew assembleDebug -PCIversionName=$APP_VERSION_NAME -PCIversionCode=4
+        - ./gradlew assembleDebug -PCIversionName=$APP_VERSION_NAME
         - cp -r app/build/outputs $CIRCLE_ARTIFACTS
 
 deployment:
