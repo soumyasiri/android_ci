@@ -8,6 +8,7 @@ machine:
     # Date format to be used in naming
     # yyyymmddHHMM
 #    VERSION_DATE : $(date +%Y%m%d%k%M)
+    VERSION_DATE : $(date +'%Y-%m-%d : %k:%M')
     APK_DEBUG_PATH: '/outputs/apk/app-debug.apk'
     VERSION_CODE: $APP_VERSION_CODE
     APP_VERSION_CODE: $((VERSION_CODE+10))
@@ -24,7 +25,7 @@ dependencies:
 
 test:
     override:
-        - ./gradlew assembleDebug -PCIversionName=$APP_VERSION_NAME -PCIversionCode=$((VERSION_CODE+10))
+        - ./gradlew assembleDebug -PCIversionName=$APP_VERSION_NAME -PCIversionCode=$VERSION_DATE
         - cp -r app/build/outputs $CIRCLE_ARTIFACTS
 
 deployment:
