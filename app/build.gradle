@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 project.ext{
 
     versionName = "1.0"
-    versionCode = 10
+    versionCode = 1
 
 }
 
