@@ -37,8 +37,10 @@ android {
         applicationId "com.example.udemy.myapp01"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode = project.ext.versionCode.toInteger()
-        versionName = project.ext.versionName
+        versionCode = 2
+        versionName = 2
+//        versionCode = project.ext.versionCode.toInteger()
+//        versionName = project.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "3d5790303f1d40bd94c4be330146eaff"]
