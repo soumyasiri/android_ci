@@ -24,9 +24,11 @@ echo $ACCESS_TOKEN
 # Theird one is application id
 APP_ID=$3
 
-NOTES=$'app/release_notes.txt'
-
 echo $APP_ID
+
+NOTES=$4
+
+echo $NOTES
 
 curl \
 -F "status=2" \
