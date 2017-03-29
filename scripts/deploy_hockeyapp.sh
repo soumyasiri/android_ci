@@ -26,14 +26,15 @@ APP_ID=$3
 
 echo $APP_ID
 
-NOTES=$4
-
-echo $NOTES
+#NOTES=$4
+#
+#echo $NOTES
 
 curl \
+var=$'(<./release_notes.txt)'
 -F "status=2" \
 -F "notify=2" \
--F "notes=$NOTES" \
+-F "notes=$var" \
 -F "ipa=@$APK_PATH" \
 -H "X-HockeyAppToken:$ACCESS_TOKEN" \
 https://rink.hockeyapp.net/api/2/apps/$APP_ID/app_versions/upload
